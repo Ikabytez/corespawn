@@ -9,26 +9,26 @@ const openFaq = ref(0)
 watch(language, (value) => {
   document.documentElement.lang = value
   document.title = value === 'en'
-    ? 'Corespawn — Your world. Your rules.'
-    : 'Corespawn — Twój świat. Twoje zasady.'
+    ? 'Corespawn | Your world. Your rules.'
+    : 'Corespawn | Twój świat. Twoje zasady.'
   localStorage.setItem('corespawn-language', value)
 }, { immediate: true })
 
-const toggleLanguage = () => {
-  language.value = language.value === 'en' ? 'pl' : 'en'
-}
-
 const copy = {
   en: {
-    home: 'Corespawn — Your world. Your rules.',
-    homeLabel: 'Corespawn — home',
+    home: 'Corespawn | Your world. Your rules.',
+    homeLabel: 'Corespawn | home',
     menuLabel: 'Open menu',
     navLabel: 'Main navigation',
     nav: ['Games', 'Why us', 'Pricing', 'FAQ', 'Client area'],
-    languageLabel: 'Switch language to Polish',
+    languageLabel: 'Select language',
+    englishSelected: 'English selected',
+    polishSelected: 'Polish selected',
+    switchToEnglish: 'Switch language to English',
+    switchToPolish: 'Switch language to Polish',
     heroEyebrow: 'SERVERS READY TO PLAY',
     heroTitle: ['Your world.', 'Your', 'rules.'],
-    heroDescription: 'Launch game servers without lag, waiting, or hassle. You pick the game — we take care of the rest.',
+    heroDescription: 'Launch game servers without lag, waiting, or hassle. You pick the game | we take care of the rest.',
     chooseGame: 'Choose your game',
     discover: 'Discover Corespawn',
     playerCount: 'players already here',
@@ -85,15 +85,19 @@ const copy = {
     emailLabel: 'Email Corespawn',
   },
   pl: {
-    home: 'Corespawn — Twój świat. Twoje zasady.',
-    homeLabel: 'Corespawn — strona główna',
+    home: 'Corespawn | Twój świat. Twoje zasady.',
+    homeLabel: 'Corespawn | strona główna',
     menuLabel: 'Otwórz menu',
     navLabel: 'Nawigacja główna',
     nav: ['Gry', 'Dlaczego my', 'Cennik', 'FAQ', 'Panel klienta'],
-    languageLabel: 'Switch language to English',
+    languageLabel: 'Wybierz język',
+    englishSelected: 'Wybrano język angielski',
+    polishSelected: 'Wybrano język polski',
+    switchToEnglish: 'Przełącz język na angielski',
+    switchToPolish: 'Przełącz język na polski',
     heroEyebrow: 'SERWERY GOTOWE DO GRY',
     heroTitle: ['Twój świat.', 'Twoje', 'zasady.'],
-    heroDescription: 'Stawiaj serwery gier bez lagów, czekania i zbędnych komplikacji. Ty wybierasz grę — my ogarniamy resztę.',
+    heroDescription: 'Stawiaj serwery gier bez lagów, czekania i zbędnych komplikacji. Ty wybierasz grę | my ogarniamy resztę.',
     chooseGame: 'Wybierz swoją grę',
     discover: 'Poznaj Corespawn',
     playerCount: 'graczy już z nami',
@@ -162,11 +166,25 @@ const t = () => copy[language.value]
         <span>core<span class="brand-light">spawn</span><span class="brand-dot">.</span></span>
       </a>
 
-      <button class="language-toggle" type="button" :aria-label="t().languageLabel" @click="toggleLanguage">
-        <span :class="{ 'language-active': language === 'en' }">EN</span>
-        <span class="language-divider">/</span>
-        <span :class="{ 'language-active': language === 'pl' }">PL</span>
-      </button>
+      <div class="language-toggle" role="group" :aria-label="t().languageLabel">
+        <button
+          class="language-option"
+          :class="{ 'language-active': language === 'en' }"
+          type="button"
+          :aria-label="language === 'en' ? t().englishSelected : t().switchToEnglish"
+          :aria-pressed="language === 'en'"
+          @click="language = 'en'"
+        >EN</button>
+        <span class="language-divider" aria-hidden="true">|</span>
+        <button
+          class="language-option"
+          :class="{ 'language-active': language === 'pl' }"
+          type="button"
+          :aria-label="language === 'pl' ? t().polishSelected : t().switchToPolish"
+          :aria-pressed="language === 'pl'"
+          @click="language = 'pl'"
+        >PL</button>
+      </div>
 
       <button
         class="menu-toggle"

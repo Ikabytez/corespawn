@@ -32,10 +32,12 @@ button { font: inherit; }
 .brand-mark span:nth-child(1) { height: 13px; opacity: .6; }
 .brand-mark span:nth-child(2) { height: 20px; opacity: .8; }
 .brand-mark span:nth-child(3) { height: 26px; }
-.language-toggle { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; padding: 7px 9px; color: #7f898d; background: transparent; border: 1px solid #343a40; border-radius: 3px; font: 9px var(--mono); cursor: pointer; }
-.language-toggle:hover { border-color: #68725b; }
-.language-toggle .language-active { color: var(--lime); }
-.language-divider { color: #50595d; }
+.language-toggle { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; padding: 5px 8px; color: #7f898d; background: rgba(255,255,255,.02); border: 1px solid #343a40; border-radius: 4px; }
+.language-option { min-width: 31px; min-height: 30px; padding: 0 6px; color: #9aa3a7; background: transparent; border: 0; border-radius: 3px; font: 600 11px var(--mono); cursor: pointer; transition: color .2s, background .2s; }
+.language-option:hover { color: #f1f3f4; }
+.language-option.language-active { color: #11150b; background: var(--lime); }
+.language-option:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.language-divider { color: #697277; font: 10px var(--mono); }
 .main-nav { display: flex; align-items: center; gap: 38px; font-size: 12px; color: #a4abb1; font-weight: 600; }
 .main-nav a { transition: color .2s; }
 .main-nav a:hover, .footer-links a:hover { color: var(--lime); }
@@ -199,4 +201,62 @@ h2 { font-size: 37px; line-height: 1.14; letter-spacing: -1.9px; margin: 12px 0 
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+.main-nav { font-size: 14px; }
+.eyebrow { font-size: 11px; }
+.hero-description { max-width: 470px; font-size: 16px; }
+.button { font-size: 13px; }
+.play-icon { font-size: 10px; }
+.avatar-stack span { font-size: 8px; }
+.social-proof strong { font-size: 13px; }
+.social-proof > div:nth-child(2) span, .rating small { font-size: 11px; }
+.rating > span { font-size: 12px; }
+.panel-label { font-size: 8px; }
+.server-heading strong { font-size: 13px; }
+.server-heading small, .server-metrics strong small { font-size: 10px; }
+.online-pill { font-size: 8px; }
+.server-metrics > div > span { font-size: 8px; }
+.console-line { font-size: 9px; }
+.floating-chip small { font-size: 10px; }
+.visual-caption, .scroll-cue { font-size: 10px; }
+.text-link { font-size: 12px; }
+.game-info strong { font-size: 14px; }
+.game-info small { font-size: 11px; }
+.game-tag { font-size: 8px; }
+.benefit-item h3 { font-size: 15px; }
+.benefit-item p { font-size: 12px; }
+.pricing-copy p { font-size: 13px; }
+.price-from { font-size: 11px; }
+.pricing-action > small { font-size: 10px; }
+.faq-section .section-heading > p { font-size: 12px; }
+.faq-item button { font-size: 14px; }
+.faq-item p { font-size: 12px; }
+.footer-main > p, .footer-links { font-size: 11px; }
+.footer-bottom { font-size: 10px; }
+
+@media (max-width: 640px) {
+  .main-nav { font-size: 14px; }
+  .hero-description { font-size: 14px; }
+  .button { font-size: 12px; }
+  .panel-label { font-size: 8px; }
+  .server-heading strong { font-size: 12px; }
+  .server-heading small, .server-metrics strong small { font-size: 9px; }
+  .server-metrics > div > span { font-size: 8px; }
+  .console-line { font-size: 8px; }
+  .floating-chip small { font-size: 9px; }
+  .visual-caption, .scroll-cue { font-size: 8px; }
+  .game-info strong { font-size: 12px; }
+  .game-info small { font-size: 10px; }
+  .game-tag { font-size: 7px; }
+  .benefit-item h3 { font-size: 14px; }
+  .benefit-item p { font-size: 11px; }
+  .pricing-copy p { font-size: 12px; }
+  .price-from { font-size: 10px; }
+  .pricing-action > small { font-size: 9px; }
+  .faq-section .section-heading > p { font-size: 11px; }
+  .faq-item button { font-size: 12px; }
+  .faq-item p { font-size: 11px; }
+  .footer-main > p, .footer-links { font-size: 10px; }
+  .footer-bottom { font-size: 9px; }
 }
