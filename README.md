@@ -1,40 +1,38 @@
 # Corespawn.pl
 
-Responsywna strona landing page Corespawn zbudowana w Vue 3, Inertia.js i Vite.
+Responsive Corespawn landing page built with Vue 3, Inertia.js, and Vite. The site is English-first, with Polish available from the language switcher.
 
-## Uruchomienie lokalne
+## Run locally
 
-Wymagany Node.js 20 lub nowszy.
+Node.js 20 or newer is required.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Otwórz adres pokazany przez Vite (zwykle `http://localhost:5173`).
+Open the address shown by Vite (usually `http://localhost:5173`).
 
-## Build produkcyjny
+## Production build
 
 ```bash
 npm run build
 ```
 
-Gotowe pliki statyczne znajdują się w `dist/`.
+The generated static files are in `dist/`.
 
-## Publikacja na GitHub
+## Publish to GitHub
 
-Repozytorium: [github.com/Ikabytez/corespawn](https://github.com/Ikabytez/corespawn).
+Repository: [github.com/Ikabytez/corespawn](https://github.com/Ikabytez/corespawn).
 
-W przyszłości nowe zmiany wypchniesz z katalogu projektu:
+To publish future changes, run this from the project directory:
 
 ```bash
 git add -A
-git commit -m "Opis zmian"
+git commit -m "Describe the changes"
 git push
 ```
 
-Do pierwszego klonowania i wdrożenia na VPS przejdź do [instrukcji wdrożenia](./deploy/README.md).
+For cloning and deploying to a VPS, see the [deployment guide](./deploy/README.md).
 
-## Wdrożenie na VPS
-
-Instrukcja instalacji na Ubuntu/Debian z Nginx i SSL Let's Encrypt znajduje się w [deploy/README.md](./deploy/README.md). Konfiguracja Nginx jest w [deploy/nginx/corespawn.pl.conf](./deploy/nginx/corespawn.pl.conf).
+The Ubuntu/Debian deployment guide for Nginx and Let's Encrypt is in [deploy/README.md](./deploy/README.md), and the Nginx config is in [deploy/nginx/corespawn.pl.conf](./deploy/nginx/corespawn.pl.conf).
