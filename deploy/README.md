@@ -23,14 +23,14 @@ npm --version
 ## 3. Pobierz projekt i zbuduj stronę na VPS
 
 ```bash
-sudo git clone ADRES_REPOZYTORIUM_GITHUB /var/www/corespawn
+sudo git clone https://github.com/Ikabytez/corespawn.git /var/www/corespawn
 sudo chown -R "$USER":"$USER" /var/www/corespawn
 cd /var/www/corespawn
 npm ci
 npm run build
 ```
 
-Zastąp `ADRES_REPOZYTORIUM_GITHUB` adresem repozytorium, np. `https://github.com/TWOJ_LOGIN/corespawn.git`. Jeżeli repozytorium jest prywatne, skonfiguruj uwierzytelnienie Git na VPS-ie przed klonowaniem; nie umieszczaj tokenu w adresie repozytorium.
+Repozytorium jest publiczne, więc do klonowania nie potrzeba tokenu. Gdyby zmieniło widoczność na prywatną, skonfiguruj uwierzytelnienie Git na VPS-ie przed klonowaniem; nie umieszczaj tokenu w adresie repozytorium.
 
 Po zbudowaniu ustaw właściciela plików dla Nginx:
 

@@ -23,17 +23,17 @@ Gotowe pliki statyczne znajdują się w `dist/`.
 
 ## Publikacja na GitHub
 
-Utwórz puste repozytorium `corespawn` na swoim koncie GitHub (bez automatycznie dodawanego README). W katalogu projektu ustaw autora pierwszego commita i wypchnij kod:
+Repozytorium: [github.com/Ikabytez/corespawn](https://github.com/Ikabytez/corespawn).
+
+W przyszłości nowe zmiany wypchniesz z katalogu projektu:
 
 ```bash
-git config user.name "Twoje imię"
-git config user.email "Adres e-mail powiązany z GitHub"
-git commit -m "Initial Corespawn website"
-git remote add origin https://github.com/TWOJ_LOGIN/corespawn.git
-git push -u origin main
+git add -A
+git commit -m "Opis zmian"
+git push
 ```
 
-GitHub poprosi o autoryzację. Nie wpisuj tokenu jako części adresu repozytorium.
+Do pierwszego klonowania i wdrożenia na VPS przejdź do [instrukcji wdrożenia](./deploy/README.md).
 
 ## Wdrożenie na VPS
 
