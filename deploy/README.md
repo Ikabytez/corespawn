@@ -105,6 +105,46 @@ sudo certbot renew --dry-run
 
 Po wdrożeniu strona powinna być dostępna pod `https://corespawn.pl`.
 
+## Biała strona po wdrożeniu
+
+Sprawdziłem odpowiedź `https://corespawn.pl`: serwer zwraca stronę źródłową, która ładuje `/resources/js/app.js`; tymczasem produkcyjny plik `dist/index.html` ładuje hashowane pliki z `/assets/`. To oznacza, że Nginx wskazuje na katalog projektu zamiast na katalog builda. W buildzie powinny istnieć `dist/index.html` i `dist/assets/`.
+
+Na VPS-ie sprawdź build:
+
+```bash
+cd /var/www/corespawn
+npm ci
+npm run build
+ls -l dist/index.html dist/assets/
+```
+
+Konfiguracja aktywna dla `corespawn.pl` musi zawierać:
+
+```nginx
+root /var/www/corespawn/dist;
+```
+
+Sprawdź bloki Nginx obsługujące domenę:
+
+```bash
+sudo nginx -T 2>/dev/null | grep -n -B 5 -A 18 -E 'server_name.*(corespawn\.pl|www\.corespawn\.pl)'
+```
+
+Zmień `root` w **aktywnym bloku HTTPS dla `corespawn.pl`**, nie w przypadkowym lub nieużywanym pliku. Jeśli bloki są zdublowane, usuń/wyłącz tylko błędny blok dla tej domeny — nie wyłączaj konfiguracji innych witryn. Następnie:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Sprawdź, czy serwer podaje build, a nie źródłowy plik:
+
+```bash
+curl -s https://corespawn.pl/ | grep -Eo '/(assets|resources)/[^"]+'
+```
+
+Poprawna odpowiedź zawiera ścieżki `/assets/index-....js` i `/assets/index-....css`. Żądanie do jednego z tych adresów powinno zwrócić kod `200`; `/assets/...` nie może zwracać `404`. Jeśli przeglądarka nadal pokazuje poprzednią wersję, wykonaj twarde odświeżenie (`Ctrl+Shift+R`).
+
 ## Aktualizacja strony
 
 Po wypchnięciu zmian do gałęzi `main` na VPS-ie wykonaj:
